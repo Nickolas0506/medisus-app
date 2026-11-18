@@ -1,4 +1,5 @@
 import { useNavigation, useRoute, type RouteProp } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useState } from 'react';
 import { Pressable, StyleSheet, Switch, View } from 'react-native';
 import { Botao } from '../components/Botao';
@@ -67,7 +68,7 @@ function FormularioAlerta({
   alertaId: number | undefined;
   iniciais: ValoresIniciais;
 }) {
-  const navegacao = useNavigation();
+  const navegacao = useNavigation<NativeStackNavigationProp<RotasApp>>();
   const editando = alertaId != null;
   const listaUbs = useListaUbs();
   const { criar, atualizar } = useMutacoesAlerta();
@@ -90,7 +91,7 @@ function FormularioAlerta({
     try {
       if (alertaId != null) await atualizar.mutateAsync({ id: alertaId, alerta: dados });
       else await criar.mutateAsync(dados);
-      navegacao.navigate('Abas', { screen: 'Alertas' });
+      navegacao.popTo('Abas', { screen: 'Alertas' });
     } catch {
       // a mensagem aparece pelo erroSalvar
     }
@@ -130,7 +131,7 @@ function FormularioAlerta({
           {(listaUbs.data ?? []).map((ubs) => (
             <Chip
               key={ubs.id}
-              texto={`${ubs.nome} · ${ubs.bairro}`}
+              texto={ubs.nome}
               selecionado={ubsId === ubs.id}
               aoPressionar={() => setUbsId(ubs.id)}
             />
