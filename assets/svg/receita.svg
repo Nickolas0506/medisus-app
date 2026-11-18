@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420">
+  <circle cx="300" cy="215" r="190" fill="#E3F2EE"/>
+  <g transform="rotate(-6 250 210)">
+    <rect x="150" y="70" width="210" height="280" rx="18" fill="#FFFFFF" stroke="#0E7C66" stroke-width="6"/>
+    <text x="178" y="130" font-family="Georgia,serif" font-size="48" font-weight="bold" fill="#0E7C66">Rx</text>
+    <rect x="178" y="160" width="150" height="12" rx="6" fill="#B9D7CF"/>
+    <rect x="178" y="190" width="120" height="12" rx="6" fill="#B9D7CF"/>
+    <rect x="178" y="220" width="140" height="12" rx="6" fill="#B9D7CF"/>
+    <path d="M182 300c20-24 34 10 52-8s30-14 46 2" stroke="#1F5FBF" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(320 190)">
+    <rect x="0" y="30" width="170" height="120" rx="22" fill="#1F5FBF"/>
+    <rect x="50" y="10" width="70" height="34" rx="10" fill="#1F5FBF"/>
+    <circle cx="85" cy="90" r="40" fill="#FFFFFF"/>
+    <circle cx="85" cy="90" r="24" fill="#0E7C66"/>
+    <circle cx="140" cy="54" r="8" fill="#F2A93B"/>
+  </g>
+</svg>
