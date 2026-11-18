@@ -34,7 +34,11 @@ export function AbasNavigator() {
         ),
       })}
     >
-      <Abas.Screen name="Buscar" component={BuscarScreen} options={{ title: 'Buscar remédio' }} />
+      <Abas.Screen
+        name="Buscar"
+        component={BuscarScreen}
+        options={{ title: 'Buscar remédio', tabBarLabel: 'Buscar' }}
+      />
       <Abas.Screen
         name="Receita"
         component={ReceitaScreen}
@@ -45,7 +49,11 @@ export function AbasNavigator() {
         component={AlertasScreen}
         options={{ title: 'Meus alertas', tabBarLabel: 'Alertas' }}
       />
-      <Abas.Screen name="Perfil" component={PerfilScreen} options={{ title: 'Meu perfil' }} />
+      <Abas.Screen
+        name="Perfil"
+        component={PerfilScreen}
+        options={{ title: 'Meu perfil', tabBarLabel: 'Perfil' }}
+      />
     </Abas.Navigator>
   );
 }
