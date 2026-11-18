@@ -6,6 +6,11 @@ module.exports = defineConfig([
   expoConfig,
   prettierRecomendado,
   {
+    // scripts Node do projeto (geracao das imagens)
+    files: ['assets/**/*.js'],
+    languageOptions: { globals: { __dirname: 'readonly', require: 'readonly' } },
+  },
+  {
     ignores: ['node_modules/*', '.expo/*', 'dist/*', 'android/*', 'ios/*'],
   },
 ]);

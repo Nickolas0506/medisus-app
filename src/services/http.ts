@@ -1,10 +1,10 @@
-import axios from 'axios';
+import { create } from 'axios';
 import { obterUrlApi } from '../config/api';
 import type { Pagina, PaginaSpring } from '../types/api';
 import { obterToken } from './sessao';
 
 /** Cliente Axios unico do app: base da API, timeout e token JWT em toda chamada. */
-export const http = axios.create({
+export const http = create({
   timeout: 20_000,
   headers: { Accept: 'application/json' },
 });
