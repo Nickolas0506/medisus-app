@@ -22,9 +22,7 @@ export const Campo = forwardRef<TextInput, Props>(function Campo(
   return (
     <View style={estilos.container}>
       <Texto variante="rotulo">{rotulo}</Texto>
-      <View
-        style={[estilos.caixa, focado && estilos.caixaFocada, !!erro && estilos.caixaComErro]}
-      >
+      <View style={[estilos.caixa, focado && estilos.caixaFocada, !!erro && estilos.caixaComErro]}>
         {icone && <Ionicons name={icone} size={20} color={cores.textoSuave} />}
         <TextInput
           ref={ref}

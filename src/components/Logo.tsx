@@ -2,7 +2,13 @@ import { Image, StyleSheet, View } from 'react-native';
 import { espacos, imagens } from '../theme';
 import { Texto } from './Texto';
 
-export function Logo({ tamanho = 96, comSlogan = true }: { tamanho?: number; comSlogan?: boolean }) {
+export function Logo({
+  tamanho = 96,
+  comSlogan = true,
+}: {
+  tamanho?: number;
+  comSlogan?: boolean;
+}) {
   return (
     <View style={estilos.container}>
       <Image

@@ -14,6 +14,7 @@ export function useMedicamento(id: number) {
   return useQuery({
     queryKey: chaves.medicamento(id),
     queryFn: () => medicamentoService.obter(id),
+    enabled: id > 0,
   });
 }
 

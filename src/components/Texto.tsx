@@ -10,13 +10,7 @@ type Props = TextProps & {
 };
 
 /** Texto com a fonte Nunito e a escala tipografica do app. */
-export function Texto({
-  variante = 'corpo',
-  cor = 'texto',
-  centralizado,
-  style,
-  ...props
-}: Props) {
+export function Texto({ variante = 'corpo', cor = 'texto', centralizado, style, ...props }: Props) {
   return (
     <Text
       style={[estilos[variante], { color: cores[cor] }, centralizado && estilos.centro, style]}
