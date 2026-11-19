@@ -1,0 +1,22 @@
+MediSUS - Global Solution 2026/2 - Mobile Application Development
+Grupo Urbis
+
+Repositorio GitHub:
+https://github.com/Nickolas0506/medisus-app
+
+Video (YouTube):
+LINK_DO_VIDEO
+
+APK publicado (distribuicao para testadores, no lugar do Firebase App Distribution):
+https://medisus-distribuicao-production.up.railway.app/distribuicao/
+Professor convidado como testador: pf1669@fiap.com.br e profantonio.neto@fiap.com.br
+
+API Java consumida pelo app:
+https://medisus.onrender.com/swagger-ui/index.html
+
+Integrantes:
+Nickolas Davi      - RM564105
+Samara Vilela      - RM566133
+Natalia Cristina   - RM564099
+Otavio Ferreira    - RM565960
+Rodrigo Carvalho   - RM565162

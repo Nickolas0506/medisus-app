@@ -7,18 +7,19 @@ em qual UBS o remédio está disponível, lê a foto da receita com IA e avisa q
 ODS 3 (Saúde e bem-estar) e ODS 10 (Redução das desigualdades).
 
 - Vídeo (até 5 min): _link do YouTube_
+- APK publicado: https://medisus-distribuicao-production.up.railway.app/distribuicao/
 - API Java consumida pelo app: https://medisus.onrender.com (Swagger: https://medisus.onrender.com/swagger-ui/index.html)
 - Rotas usadas e conversão para o app: [docs/contrato-api.md](docs/contrato-api.md)
 
 ## Integrantes
 
-| Nome          | RM       |
-| ------------- | -------- |
-| Nickolas Davi | RM564105 |
-| Rodrigo       | RM       |
-| Otávio        | RM       |
-| Natália       | RM       |
-| Samara        | RM       |
+| Nome             | RM       |
+| ---------------- | -------- |
+| Nickolas Davi    | RM564105 |
+| Rodrigo Carvalho | RM565162 |
+| Otávio Ferreira  | RM565960 |
+| Natália Cristina | RM564099 |
+| Samara Vilela    | RM566133 |
 
 ## Telas
 
