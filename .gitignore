@@ -11,3 +11,7 @@ ios/
 npm-debug.*
 *.log
 .DS_Store
+
+# API de distribuicao (Java)
+distribuicao-api/target/
+distribuicao-api/data/

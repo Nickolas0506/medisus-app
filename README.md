@@ -82,9 +82,17 @@ Usuário de teste: `cidadao@medisus.com` / `medisus123`.
 
 ## Publicação
 
-O APK é gerado a partir de um commit do `main` e publicado no Firebase App Distribution com o professor
-como tester. A tela **Sobre o App** mostra o hash desse commit (lido do Git no build pelo `app.config.js`),
-então a versão publicada corresponde exatamente ao código do repositório.
+O APK é gerado a partir de um commit do `main` e publicado na **API de distribuição do MediSUS**
+(`distribuicao-api/`, Java + Spring Boot), que faz o papel do Firebase App Distribution: o professor é
+cadastrado como testador pelo e-mail institucional, recebe um link de convite e baixa o APK; todo download
+fica registrado no painel. A tela **Sobre o App** mostra o hash desse commit (lido do Git no build pelo
+`app.config.js`), então a versão publicada corresponde exatamente ao código do repositório.
+
+```bash
+MEDISUS_ADMIN_TOKEN=... MEDISUS_DISTRIBUICAO_URL=https://<api-de-distribuicao>   ./scripts/distribuir.sh caminho/do/app.apk professor@fiap.com.br
+```
+
+Detalhes em [`distribuicao-api/README.md`](distribuicao-api/README.md).
 
 ## Uso de IA
 
