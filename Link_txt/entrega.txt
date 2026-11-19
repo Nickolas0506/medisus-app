@@ -5,7 +5,7 @@ Repositorio GitHub:
 https://github.com/Nickolas0506/medisus-app
 
 Video (YouTube):
-LINK_DO_VIDEO
+https://youtu.be/zCFce3Hb290
 
 APK publicado (distribuicao para testadores, no lugar do Firebase App Distribution):
 https://medisus-distribuicao-production.up.railway.app/distribuicao/
