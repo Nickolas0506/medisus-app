@@ -8,7 +8,7 @@ import { Tela } from '../components/Tela';
 import { Texto } from '../components/Texto';
 import { useEstoquesDoMedicamento, useMedicamento } from '../hooks/useMedicamentos';
 import type { RotasApp } from '../navigation/tipos';
-import { cores, espacos, imagens, raios } from '../theme';
+import { cores, imagens, raios } from '../theme';
 import { mensagemDeErro } from '../utils/erros';
 
 /** Mostra em quais UBS o remedio esta disponivel e oferece o alerta quando falta. */
@@ -45,26 +45,12 @@ export default function OndeTemScreen() {
     <Tela>
       <CartaoMedicamento medicamento={remedio} />
 
-      <View style={estilos.acoes}>
-        <View style={estilos.acao}>
-          <Botao
-            titulo="Me avise"
-            tipo={comEstoque.length ? 'contorno' : 'primario'}
-            icone="notifications-outline"
-            aoPressionar={() => navegacao.navigate('AlertaForm', { medicamentoId: remedio.id })}
-          />
-        </View>
-        <View style={estilos.acao}>
-          <Botao
-            titulo="Tirar dúvida"
-            tipo="secundario"
-            icone="chatbubble-ellipses-outline"
-            aoPressionar={() =>
-              navegacao.navigate('Bula', { medicamentoId: remedio.id, nome: remedio.nome })
-            }
-          />
-        </View>
-      </View>
+      <Botao
+        titulo="Me avise quando chegar"
+        tipo={comEstoque.length ? 'contorno' : 'primario'}
+        icone="notifications-outline"
+        aoPressionar={() => navegacao.navigate('AlertaForm', { medicamentoId: remedio.id })}
+      />
 
       {comEstoque.length > 0 ? (
         <>
@@ -80,8 +66,8 @@ export default function OndeTemScreen() {
             titulo="Em falta em todas as UBS"
             descricao={
               remedio.farmaciaPopular
-                ? 'Você pode retirar no Farmácia Popular com a receita. Toque em "Me avise" para saber quando chegar na UBS.'
-                : 'Toque em "Me avise" e o MediSUS te avisa quando o remédio chegar.'
+                ? 'Você pode retirar no Farmácia Popular com a receita. Toque em "Me avise quando chegar" para saber quando chegar na UBS.'
+                : 'Toque em "Me avise quando chegar" e o MediSUS te avisa quando o remédio chegar.'
             }
           />
         </View>
@@ -102,7 +88,5 @@ export default function OndeTemScreen() {
 }
 
 const estilos = StyleSheet.create({
-  acoes: { flexDirection: 'row', gap: espacos.sm },
-  acao: { flex: 1 },
   semEstoque: { backgroundColor: cores.superficie, borderRadius: raios.lg },
 });

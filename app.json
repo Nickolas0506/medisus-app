@@ -45,7 +45,7 @@
       ]
     ],
     "extra": {
-      "apiUrlProducao": "",
+      "apiUrlProducao": "https://medisus.onrender.com/api",
       "repositorio": ""
     }
   }

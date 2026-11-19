@@ -83,7 +83,7 @@ export default function CadastroScreen() {
           ref={campoSenha}
           rotulo="Senha"
           icone="lock-closed-outline"
-          placeholder="Mínimo de 6 caracteres"
+          placeholder="Mínimo de 8 caracteres"
           senha
           autoComplete="new-password"
           returnKeyType="next"

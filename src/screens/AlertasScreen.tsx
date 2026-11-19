@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { FlatList, Pressable, RefreshControl, StyleSheet, Switch, View } from 'react-native';
+import { FlatList, Pressable, RefreshControl, StyleSheet, View } from 'react-native';
 import { Botao } from '../components/Botao';
 import { Cartao } from '../components/Cartao';
 import { Carregando, EstadoVazio, MensagemErro } from '../components/Estados';
@@ -13,23 +13,12 @@ import { confirmar } from '../utils/confirmar';
 import { mensagemDeErro } from '../utils/erros';
 import { formatarData, formatarDataHora } from '../utils/formatacao';
 
-/** Lista (Read) dos alertas, com ligar/desligar (Update) e excluir (Delete). */
+/** Lista (Read) dos alertas, com editar (Update) e excluir (Delete). */
 export default function AlertasScreen() {
   const navegacao = useNavigation();
   const { data: alertas, isLoading, isError, error, refetch, isRefetching } = useAlertas();
-  const { atualizar, excluir } = useMutacoesAlerta();
-  const erroMutacao = atualizar.error ?? excluir.error;
-
-  function alternarAtivo(alerta: AlertaReposicao) {
-    atualizar.mutate({
-      id: alerta.id,
-      alerta: {
-        medicamentoId: alerta.medicamento.id,
-        ubsId: alerta.ubs?.id ?? null,
-        ativo: !alerta.ativo,
-      },
-    });
-  }
+  const { excluir } = useMutacoesAlerta();
+  const erroMutacao = excluir.error;
 
   async function aoExcluir(alerta: AlertaReposicao) {
     const ok = await confirmar(
@@ -83,14 +72,6 @@ export default function AlertasScreen() {
                 {formatarData(item.criadoEm)}
               </Texto>
             </View>
-            <Switch
-              accessibilityLabel={item.ativo ? 'Desativar alerta' : 'Ativar alerta'}
-              value={item.ativo}
-              onValueChange={() => alternarAtivo(item)}
-              disabled={atualizar.isPending}
-              trackColor={{ true: cores.primaria, false: cores.borda }}
-              thumbColor={cores.superficie}
-            />
           </View>
 
           {item.avisadoEm ? (
@@ -100,11 +81,7 @@ export default function AlertasScreen() {
               icone="checkmark-done"
             />
           ) : (
-            <Etiqueta
-              texto={item.ativo ? 'Aguardando reposição' : 'Pausado'}
-              tom={item.ativo ? 'aviso' : 'neutro'}
-              icone={item.ativo ? 'time-outline' : 'pause-circle-outline'}
-            />
+            <Etiqueta texto="Aguardando reposição" tom="aviso" icone="time-outline" />
           )}
 
           <View style={estilos.acoes}>

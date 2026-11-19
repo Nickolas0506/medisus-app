@@ -16,7 +16,6 @@ export type RotasApp = {
   Abas: NavigatorScreenParams<RotasAbas>;
   OndeTem: { medicamentoId: number; nome?: string };
   AlertaForm: { alertaId?: number; medicamentoId?: number } | undefined;
-  Bula: { medicamentoId: number; nome: string };
   Sobre: undefined;
 };
 

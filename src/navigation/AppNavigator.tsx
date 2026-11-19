@@ -3,7 +3,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Carregando } from '../components/Estados';
 import { useAuth } from '../contexts/AuthContext';
 import AlertaFormScreen from '../screens/AlertaFormScreen';
-import BulaScreen from '../screens/BulaScreen';
 import CadastroScreen from '../screens/auth/CadastroScreen';
 import LoginScreen from '../screens/auth/LoginScreen';
 import OndeTemScreen from '../screens/OndeTemScreen';
@@ -59,11 +58,6 @@ export function AppNavigator() {
             options={({ route }) => ({
               title: route.params?.alertaId ? 'Editar alerta' : 'Novo alerta',
             })}
-          />
-          <PilhaApp.Screen
-            name="Bula"
-            component={BulaScreen}
-            options={{ title: 'Dúvida sobre o remédio' }}
           />
           <PilhaApp.Screen
             name="Sobre"

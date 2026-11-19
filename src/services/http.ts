@@ -5,7 +5,8 @@ import { obterToken } from './sessao';
 
 /** Cliente Axios unico do app: base da API, timeout e token JWT em toda chamada. */
 export const http = create({
-  timeout: 20_000,
+  // A API fica no plano gratis do Render: a primeira chamada depois de parada leva ate ~1 min.
+  timeout: 70_000,
   headers: { Accept: 'application/json' },
 });
 

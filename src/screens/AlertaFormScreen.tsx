@@ -1,10 +1,9 @@
 import { useNavigation, useRoute, type RouteProp } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useState } from 'react';
-import { Pressable, StyleSheet, Switch, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { Botao } from '../components/Botao';
 import { Campo } from '../components/Campo';
-import { Cartao } from '../components/Cartao';
 import { CartaoMedicamento } from '../components/CartaoMedicamento';
 import { Carregando, MensagemErro } from '../components/Estados';
 import { Tela } from '../components/Tela';
@@ -20,11 +19,10 @@ import { mensagemDeErro } from '../utils/erros';
 type ValoresIniciais = {
   medicamento: Medicamento | null;
   ubsId: number | null;
-  ativo: boolean;
 };
 
 /**
- * Create e Update do alerta de reposicao: remedio, UBS preferida e ligado/desligado.
+ * Create e Update do alerta de reposicao: remedio e UBS preferida.
  * Primeiro carrega o alerta (edicao) ou o remedio vindo da tela "Onde tem",
  * depois abre o formulario ja preenchido.
  */
@@ -55,8 +53,8 @@ export default function AlertaFormScreen() {
 
   const alerta = alertaExistente.data;
   const iniciais: ValoresIniciais = alerta
-    ? { medicamento: alerta.medicamento, ubsId: alerta.ubs?.id ?? null, ativo: alerta.ativo }
-    : { medicamento: medicamentoInicial.data ?? null, ubsId: null, ativo: true };
+    ? { medicamento: alerta.medicamento, ubsId: alerta.ubs?.id ?? null }
+    : { medicamento: medicamentoInicial.data ?? null, ubsId: null };
 
   return <FormularioAlerta alertaId={alertaId} iniciais={iniciais} />;
 }
@@ -75,7 +73,6 @@ function FormularioAlerta({
 
   const [medicamento, setMedicamento] = useState(iniciais.medicamento);
   const [ubsId, setUbsId] = useState(iniciais.ubsId);
-  const [ativo, setAtivo] = useState(iniciais.ativo);
   const [erroValidacao, setErroValidacao] = useState<string | null>(null);
 
   const salvando = criar.isPending || atualizar.isPending;
@@ -87,7 +84,7 @@ function FormularioAlerta({
       return;
     }
     setErroValidacao(null);
-    const dados = { medicamentoId: medicamento.id, ubsId, ativo };
+    const dados = { medicamentoId: medicamento.id, ubsId };
     try {
       if (alertaId != null) await atualizar.mutateAsync({ id: alertaId, alerta: dados });
       else await criar.mutateAsync(dados);
@@ -138,22 +135,6 @@ function FormularioAlerta({
           ))}
         </View>
       )}
-
-      <Cartao style={estilos.linhaAtivo}>
-        <View style={estilos.textosAtivo}>
-          <Texto variante="rotulo">Alerta ligado</Texto>
-          <Texto variante="legenda" cor="textoSuave">
-            Desligue para pausar sem perder o alerta.
-          </Texto>
-        </View>
-        <Switch
-          accessibilityLabel="Alerta ligado"
-          value={ativo}
-          onValueChange={setAtivo}
-          trackColor={{ true: cores.primaria, false: cores.borda }}
-          thumbColor={cores.superficie}
-        />
-      </Cartao>
 
       {(erroValidacao || erroSalvar) && (
         <Texto variante="rotulo" cor="erro" accessibilityRole="alert">
@@ -244,6 +225,4 @@ const estilos = StyleSheet.create({
   },
   chipSelecionado: { backgroundColor: cores.primaria, borderColor: cores.primaria },
   textoChip: { fontFamily: fontes.semiBold },
-  linhaAtivo: { flexDirection: 'row', alignItems: 'center' },
-  textosAtivo: { flex: 1 },
 });

@@ -1,9 +1,8 @@
-// Modelos devolvidos pela API Java do MediSUS (ver docs/contrato-api.md).
+// Modelos usados pelas telas. Os services convertem a resposta da API Java (types/apiJava.ts) para estes tipos.
 
 export type Papel = 'CIDADAO' | 'FARMACEUTICO' | 'GESTOR';
 
 export type Usuario = {
-  id: number;
   nome: string;
   email: string;
   papel: Papel;
@@ -52,7 +51,6 @@ export type AlertaReposicao = {
 export type AlertaRequisicao = {
   medicamentoId: number;
   ubsId: number | null;
-  ativo: boolean;
 };
 
 export type ItemReceita = {
@@ -64,11 +62,6 @@ export type ItemReceita = {
 
 export type LeituraReceita = {
   itens: ItemReceita[];
-};
-
-export type RespostaBula = {
-  resposta: string;
-  fontes: string[];
 };
 
 /** Pagina do Spring Data (formato classico ou o "VIA_DTO" do Spring Boot 3.3+). */
@@ -87,10 +80,11 @@ export type Pagina<T> = {
   totalItens: number;
 };
 
-/** Corpo de erro padronizado pelo @RestControllerAdvice da API. */
+/** Corpo de erro do GlobalExceptionHandler da API Java (ApiError). */
 export type ErroApi = {
   status?: number;
-  erro?: string;
-  mensagem?: string;
-  campos?: { campo: string; mensagem: string }[];
+  error?: string;
+  message?: string;
+  path?: string;
+  fieldErrors?: Record<string, string>;
 };

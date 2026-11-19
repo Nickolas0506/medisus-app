@@ -7,8 +7,8 @@ em qual UBS o remédio está disponível, lê a foto da receita com IA e avisa q
 ODS 3 (Saúde e bem-estar) e ODS 10 (Redução das desigualdades).
 
 - Vídeo (até 5 min): _link do YouTube_
-- API Java consumida pelo app: _link da API no ar_
-- Contrato da API: [docs/contrato-api.md](docs/contrato-api.md)
+- API Java consumida pelo app: https://medisus.onrender.com (Swagger: https://medisus.onrender.com/swagger-ui/index.html)
+- Rotas usadas e conversão para o app: [docs/contrato-api.md](docs/contrato-api.md)
 
 ## Integrantes
 
@@ -22,18 +22,17 @@ ODS 3 (Saúde e bem-estar) e ODS 10 (Redução das desigualdades).
 
 ## Telas
 
-| Tela                   | O que faz                                                          |
-| ---------------------- | ------------------------------------------------------------------ |
-| Login                  | Autenticação real na API (JWT), validação e mensagem de erro       |
-| Cadastro               | Cria a conta de cidadão e já entra no app                          |
-| Buscar remédio         | Busca por nome ou princípio ativo (paginada na API)                |
-| Onde tem               | Estoque do remédio em cada UBS, "Como chegar", Farmácia Popular    |
-| Ler receita            | Foto (câmera/galeria) → IA da API lê os remédios → UBS com cada um |
-| Meus alertas           | **CRUD**: lista, liga/pausa (update) e exclui alertas de reposição |
-| Novo/Editar alerta     | **CRUD**: cria e edita o alerta (remédio, UBS, ligado)             |
-| Dúvida sobre o remédio | Pergunta respondida pela IA com base na bula (RAG)                 |
-| Perfil                 | Dados do usuário e **logout**                                      |
-| Sobre o App            | Hash do commit de referência (não conta nas 6 telas)               |
+| Tela               | O que faz                                                             |
+| ------------------ | --------------------------------------------------------------------- |
+| Login              | Autenticação real na API (JWT), validação e mensagem de erro          |
+| Cadastro           | Cria a conta de cidadão e já entra no app                             |
+| Buscar remédio     | Busca por nome ou princípio ativo                                     |
+| Onde tem           | Estoque do remédio em cada UBS e "Como chegar" (mapa)                 |
+| Ler receita        | Foto (câmera/galeria) → IA da API lê os remédios → UBS com cada um    |
+| Meus alertas       | **CRUD**: lista, edita e exclui alertas; "Chegou!" pelas notificações |
+| Novo/Editar alerta | **CRUD**: cria e edita o alerta (remédio e UBS)                       |
+| Perfil             | Dados do usuário e **logout**                                         |
+| Sobre o App        | Hash do commit de referência (não conta nas 6 telas)                  |
 
 Sem login só existem as telas de Login e Cadastro: as demais nem são registradas na navegação.
 Token vencido (401) faz logout automático. O token fica no SecureStore (Keystore/Keychain).
@@ -98,5 +97,4 @@ Detalhes em [`distribuicao-api/README.md`](distribuicao-api/README.md).
 
 - **Claude (Anthropic)**: apoio na escrita do código, revisão e documentação. Todo o código foi revisado
   e é explicado pelo grupo.
-- A IA que lê a receita e responde dúvidas da bula roda na **API Java** (Spring AI); o app só envia a foto/
-  pergunta e mostra o resultado.
+- A IA que lê a receita roda na **API Java** (Spring AI); o app só envia a foto e mostra o resultado.
